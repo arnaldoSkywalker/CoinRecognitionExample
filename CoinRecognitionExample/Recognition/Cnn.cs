@@ -63,7 +63,9 @@ namespace CoinRecognitionExample.Recognition
 
         public NDarray Predict(string imgPath)
         {
-            return _model.Predict(Utils.Normalize(imgPath));
+            NDarray x = Utils.Normalize(imgPath);
+            x = x.reshape(1, x.shape[0], x.shape[1], x.shape[2]);
+            return _model.Predict(x);
         }
     }
 }
