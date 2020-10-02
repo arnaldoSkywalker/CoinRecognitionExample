@@ -1,12 +1,7 @@
 ﻿using CoinRecognitionExample.Detection;
 using CoinRecognitionExample.Recognition;
-using Python.Included;
 using Python.Runtime;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CoinRecognitionExample
 {

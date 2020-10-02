@@ -1,15 +1,9 @@
-﻿using System;
+﻿using Keras.Utils;
+using Numpy;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CoinRecognitionExample.Config;
-using Keras.PreProcessing.Image;
-using Keras.Utils;
-using Numpy;
-using Python.Included;
-using Python.Runtime;
 
 namespace CoinRecognitionExample.PreProcessing
 {
@@ -59,7 +53,7 @@ namespace CoinRecognitionExample.PreProcessing
         private NDarray OneHotEncoding(List<int> labels)
         {
             var npLabels = np.array(labels.ToArray()).reshape(-1);
-            return Util.ToCategorical(npLabels, NumberClasses);
+            return Util.ToCategorical(npLabels, num_classes: NumberClasses);
         }
 
         private void ProcessFile(string path)
