@@ -138,9 +138,6 @@
     <Reference Include="Python.Deployment, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Python.Deployment.1.2.0\lib\netstandard2.0\Python.Deployment.dll</HintPath>
     </Reference>
-    <Reference Include="Python.Included, Version=3.7.3.13, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Python.Included.3.7.3.13\lib\netstandard2.0\Python.Included.dll</HintPath>
-    </Reference>
     <Reference Include="Python.Runtime, Version=2.5.1.0, Culture=neutral, processorArchitecture=AMD64">
       <HintPath>..\packages\pythonnet_py37_win.2.5.1\lib\net40\Python.Runtime.dll</HintPath>
     </Reference>
@@ -190,11 +187,13 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Recognition\Cnn.cs" />
-    <Compile Include="Recognition\PreTrainedCnn.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\coins.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

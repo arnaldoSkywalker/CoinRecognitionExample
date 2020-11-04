@@ -35,10 +35,24 @@ namespace CoinRecognitionExample.PreProcessing
             // Process the list of files found in the directory.
             string[] fileEntries = Directory.GetFiles(_pathToFolder);
             foreach (string fileName in fileEntries)
-                ProcessFile(fileName);
+                if (IsRequiredExtFile(fileName))
+                    ProcessFile(fileName);
 
             MapToClassRange();
             GetTrainValidationData();
+        }
+
+        private bool IsRequiredExtFile(string fileName)
+        {
+            foreach (var ext in _extList)
+            {
+                if (fileName.Contains("." + ext))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         private void MapToClassRange()

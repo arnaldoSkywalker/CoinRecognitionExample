@@ -11,22 +11,20 @@ namespace CoinRecognitionExample
         {
             string filePath = @"C:/Users/arnal/Documents/coins.jpg";
             var coinDetector = new CoinDetector(filePath);
-            // coinDetector.ImagePreprocessing();
-
-            //SetupPyEnv();
+            coinDetector.ImagePreprocessing();
 
             var numberClasses = 60;
             var fileExt = new string[] { ".png" };
             var dataSetFilePath = @"C:/Users/arnal/Downloads/coin_dataset";
+            var predictImgPath = dataSetFilePath + "/" + "class6_image1.png";
+
             var dataSet = new PreProcessing.DataSet(dataSetFilePath, fileExt, numberClasses, 0.2);
             dataSet.LoadDataSet();
 
             var cnn = new Cnn(dataSet);
             cnn.Train();
-
-            var preTrainedCnn = new PreTrainedCnn();
-            //preTrainedCnn.Train(dataSet);
-
+            //Console.WriteLine("Predicted: " + cnn.Predict(predictImgPath));
+            
             Console.ReadLine();
         }
 
@@ -36,7 +34,7 @@ namespace CoinRecognitionExample
             string envPythonLib = envPythonHome + "Lib\\;" + envPythonHome + @"Lib\site-packages\";
             Environment.SetEnvironmentVariable("PYTHONHOME", envPythonHome, EnvironmentVariableTarget.Process);
             Environment.SetEnvironmentVariable("PATH", envPythonHome + ";" + envPythonLib + ";" + Environment.GetEnvironmentVariable("PATH", EnvironmentVariableTarget.Machine), EnvironmentVariableTarget.Process);
-            Environment.SetEnvironmentVariable("PYTHONPATH", envPythonLib, EnvironmentVariableTarget.Process);
+            Environment.SetEnvironmentVariable("PYTHONPATH", envPythonLib, EnvironmentVariableTarget.User);
            
             PythonEngine.PythonHome = envPythonHome;
             PythonEngine.PythonPath = Environment.GetEnvironmentVariable("PYTHONPATH");
